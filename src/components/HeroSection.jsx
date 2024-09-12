@@ -54,7 +54,7 @@ const HeroSection = () => {
               Your Gateway To Deals
             </h1>
             <p className="mt-2 text-lg">
-              Discover valuable opportunities at NIC ASIA Auction Assistance – Your trusted destination for exclusive deals and prime assets.
+            Discover valuable opportunities with Siddhartha Bank Auction Assistance – your trusted destination for exclusive deals and prime assets.  
             </p>
           </div>
 
