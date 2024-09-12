@@ -1,0 +1,242 @@
+import React, { useContext, useState } from "react";
+import { PropertyContext } from "../context/PropertyContext";
+import { format } from "date-fns";
+import {
+  FaAngleLeft,
+  FaAngleRight,
+  FaFacebook,
+  FaTwitter,
+  FaWhatsapp,
+} from "react-icons/fa"; // Import social media icons
+import NavBar from "../components/NavBar";
+import Footer from "../components/Footer";
+import Zoom from "react-medium-image-zoom";
+import { assets } from "../assets/propertyData";
+import "react-medium-image-zoom/dist/styles.css"; // Import for zoom functionality
+
+const CardDetail = () => {
+  const { propertyDetail } = useContext(PropertyContext);
+
+  if (!propertyDetail) {
+    return <div>Loading...</div>;
+  }
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handleNextImage = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === propertyDetail.landImg.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  const handlePrevImage = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? propertyDetail.landImg.length - 1 : prevIndex - 1
+    );
+  };
+
+  return (
+    <>
+      <NavBar />
+      <div className="container mx-auto pt-24 p-4">
+        {/* Top Section */}
+        <div className="bg-primary3 grid grid-cols-1 md:grid-cols-3 gap-5 shadow-md rounded-lg p-4 mb-6">
+          <div className="flex flex-col">
+            <h1 className="text-lg font-semibold mb-2">
+              {propertyDetail.location}, Plot {propertyDetail.plot} with Area of{" "}
+              {propertyDetail.area} sq.ft.
+            </h1>
+            <p>
+              Auction Start Date:{" "}
+              {format(new Date(propertyDetail.auctionStart), "PPP")}
+            </p>
+            <p>
+              Auction End Date:{" "}
+              {format(new Date(propertyDetail.auctionEnd), "PPP")}
+            </p>
+            <a
+              href={propertyDetail.googleLocation}
+              rel="noopener noreferrer"
+              className="text-primary1 font-bold  cursor-pointer py-2 px-3 border-2 w-[249px] rounded-full border-dotted text-center hover:scale-100 transform "
+            >
+              View Location in Google Map
+            </a>
+          </div>
+
+          {/* Contact Info and Social Links */}
+          <div className="mt-4">
+            <p>Contact Details for Further Assistance:</p>
+            <ul className="">
+              <li>Contact Name 1: 9812345678</li>
+              <li>Contact Name 2: 9812345678</li>
+            </ul>
+          </div>
+          <div className="flex mt-4 space-x-4">
+            <a href="#" className="text-blue-600">
+              <FaFacebook /> Facebook
+            </a>
+            <a href="#" className="text-blue-400">
+              <FaTwitter /> Twitter
+            </a>
+            <a href="#" className="text-green-600">
+              <FaWhatsapp /> WhatsApp
+            </a>
+          </div>
+        </div>
+
+        {/* Overview Section */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Main Content */}
+          <div className="md:col-span-2">
+            {/* Property Pictures */}
+            <div className="bg-white shadow-md rounded-lg p-4 mb-6">
+              <h2 className="text-lg font-semibold mb-4">Property Pictures</h2>
+              <div className="relative group h-96 overflow-hidden mb-4">
+                <Zoom>
+                  <img
+                    src={propertyDetail.landImg[currentIndex]}
+                    className="h-full w-full object-cover"
+                    alt="property"
+                  />
+                </Zoom>
+                <button
+                  onClick={handlePrevImage}
+                  className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow hidden group-hover:block z-20"
+                >
+                  <FaAngleLeft />
+                </button>
+                <button
+                  onClick={handleNextImage}
+                  className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow hidden group-hover:block z-20"
+                >
+                  <FaAngleRight />
+                </button>
+              </div>
+              <div className="flex space-x-2">
+                {propertyDetail.landImg.map((img, index) => (
+                  <img
+                    key={index}
+                    src={img}
+                    className={`h-16 w-16 object-cover cursor-pointer ${
+                      index === currentIndex ? "border-2 border-red-600" : ""
+                    }`}
+                    onClick={() => setCurrentIndex(index)}
+                    alt={`Thumbnail ${index + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* Blueprint / Landmark */}
+            <div className="bg-white shadow-md rounded-lg p-4 mb-6">
+              <h3 className="text-lg font-semibold mb-4">
+                Blueprint / Landmark
+              </h3>
+              <img
+                src={propertyDetail.blueprintImg}
+                alt="Blueprint"
+                className="w-full h-auto"
+              />
+            </div>
+
+            {/* Google Location Embed */}
+            <div className="bg-white shadow-md rounded-lg p-4">
+              <h3 className="text-lg font-semibold mb-4">Google Location</h3>
+              {/* <iframe
+                src={propertyDetail.googleLocation}
+                width="100%"
+                height="400"
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe> */}
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.710078483527!2d85.33393177405259!3d27.69535422602292!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19a77520a339%3A0x4df14616bdef4f1c!2sSoftech%20Foundation%20Pvt.Ltd.!5e0!3m2!1sen!2snp!4v1725950146568!5m2!1sen!2snp"
+                width="100%"
+                height="400"
+                style={{border:0}}
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+              <a
+                href={propertyDetail.googleLocation}
+                rel="noopener noreferrer"
+                className="text-red-600 underline block mt-2 cursor-pointer"
+              >
+                Click here to view location in Google Map
+              </a>
+            </div>
+          </div>
+
+          {/* Sidebar */}
+          <div className="md:col-span-1 sticky top-24 ">
+            <div className="sticky top-24">
+            <div className="bg-white  shadow-md rounded-lg p-4 mb-6">
+              <h3 className="text-lg font-semibold mb-4">
+                Scan to Get Our Website URL
+              </h3>
+              <img src={assets.qr} alt="QR Code" className="w-full h-auto" />
+            </div>
+            <div className="bg-white shadow-md rounded-lg p-4">
+            </div>
+              <h3 className="text-lg font-semibold mb-4">
+                Request Your Enquiry Here
+              </h3>
+              <form>
+                <div className="mb-4">
+                  <label className="block text-gray-700">Full Name</label>
+                  <input
+                    type="text"
+                    className="w-full p-2 border rounded"
+                    placeholder="Your Name"
+                  />
+                </div>
+                <div className="mb-4">
+                  <label className="block text-gray-700">Email</label>
+                  <input
+                    type="email"
+                    className="w-full p-2 border rounded"
+                    placeholder="Your Email"
+                  />
+                </div>
+                <div className="mb-4">
+                  <label className="block text-gray-700">Mobile Number</label>
+                  <input
+                    type="text"
+                    className="w-full p-2 border rounded"
+                    placeholder="Your Mobile Number"
+                  />
+                </div>
+                <div className="mb-4">
+                  <label className="block text-gray-700">Your Address</label>
+                  <input
+                    type="text"
+                    className="w-full p-2 border rounded"
+                    placeholder="Your Address"
+                  />
+                </div>
+                <div className="mb-4">
+                  <label className="block text-gray-700">Message</label>
+                  <textarea
+                    className="w-full p-2 border rounded"
+                    placeholder="Your Message"
+                  ></textarea>
+                </div>
+                <button
+                  type="submit"
+                  className="w-full bg-red-600 text-white p-2 rounded"
+                >
+                  Submit
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <Footer />
+    </>
+  );
+};
+
+export default CardDetail;
