@@ -40,8 +40,8 @@ const FilteredCardsPage = () => {
   // Apply filters only when clicking the Apply button
   const applyFilters = () => {
     setAppliedFilters({ ...filters });
-    setShowFilters(false); // Hide the filter dropdown after applying on small screens
-    setCurrentPage(1); // Reset to the first page after applying filters
+    setShowFilters(false); 
+    setCurrentPage(1); 
   };
 
   // Reset filters to the default values
