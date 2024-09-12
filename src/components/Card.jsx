@@ -87,7 +87,7 @@ const Card = () => {
     applyFilters();
   };
   const handleAuctionTypeClick = (auctionType) => {
-    navigate(`/cards/auctionType/${auctionType.toLowerCase()}/all/all`);
+    navigate(`/cards/auctionType/${auctionType.toLowerCase()}`);
   };
   useEffect(() => {
     applyFilters();
