@@ -47,7 +47,7 @@ const HeroSection = () => {
 
   return (
     <>
-      <div className="grid mx-auto container grid-cols-1 md:grid-cols-2 gap-0 mt-[4.8rem]">
+      <div className="grid mx-auto container grid-cols-1 md:grid-cols-2 gap-0 ">
         <div className="flex flex-col justify-center items-center p-8 md:p-16">
           <div className="text-center md:text-start mb-4">
             <h1 className="text-3xl md:text-4xl font-bold">
@@ -63,7 +63,7 @@ const HeroSection = () => {
             <select
               value={searchType}
               onChange={(e) => setSearchType(e.target.value)}
-              className="p-2 rounded-l-full border-l-[1px] border-t-[1px] border-b-[1px] border-primary2"
+              className="p-2 rounded-l-full border-b-[1px] border-t-[1px] sm:border-b-[1px] border-primary2"
             >
               <option value="auctionType">Auction Type</option>
               <option value="province">Province</option>
@@ -75,9 +75,10 @@ const HeroSection = () => {
               onChange={(e) => setSearchValue(e.target.value)}
               onKeyDown={handleKeyDown}
               placeholder="Enter your search term"
-              className="p-2 w-full border-l-[1px] border-t-[1px] border-b-[1px] border-primary2 focus:outline-none"
+              className="p-2 w-full border-l-[1px] border-t-[1px] border-b-[1px] border-primary2  focus:outline-none"
+              required
             />
-            <button onClick={handleSearch} className="bg-primary1 text-white p-2 rounded-r-full">
+            <button onClick={handleSearch} className="bg-primary1 text-white p-2 rounded-r-full hover:text-black font-semibold">
               Search
             </button>
           </div>
@@ -87,7 +88,7 @@ const HeroSection = () => {
             <div className="text-center">
               <div className="text-primary1  sm:text-2xl font-semibold">{totalItems}</div>
               <button
-                className="  px-4 py-2 rounded-lg"
+                className="  px-4 py-2 rounded-lg hover:text-primary1"
                 onClick={() => handleAuctionTypeClick('total')}
               >
                 Total
@@ -96,7 +97,7 @@ const HeroSection = () => {
             <div className="text-center">
               <div className="text-primary1   sm:text-2xl font-bold">{creditCount}</div>
               <button
-                className="  px-4 py-2 rounded-lg"
+                className="  px-4 py-2 hover:text-primary1"
                 onClick={() => handleAuctionTypeClick('credit')}
               >
                 Credit Auction
@@ -105,7 +106,7 @@ const HeroSection = () => {
             <div className="text-center">
               <div className="text-primary1  sm:text-2xl font-semibold">{nbaCount}</div>
               <button
-                className="  px-4 py-2 rounded-lg"
+                className="  px-4 py-2  hover:text-primary1"
                 onClick={() => handleAuctionTypeClick('nba')}
               >
                 NBA
@@ -114,7 +115,7 @@ const HeroSection = () => {
             <div className="text-center">
               <div className="text-primary1  sm:text-2xl font-semibold">{bankingCount}</div>
               <button
-                className="  px-4 py-2 rounded-lg"
+                className="  px-4 py-2 hover:text-primary1"
                 onClick={() => handleAuctionTypeClick('banking assets')}
               >
                 Banking Assets

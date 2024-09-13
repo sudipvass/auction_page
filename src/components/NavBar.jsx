@@ -8,7 +8,7 @@ const NavBar = () => {
     <>
       <nav className="sticky top-0 z-50 bg-white w-full h-auto p-4 shadow-lg container">
         {/* Main flex container */}
-        <div className="flex flex-col items-center sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col items-center sm:flex-row  sm:items-center sm:justify-between">
           {/* Logo and Slogan Section */}
           <div className="flex items-center sm:flex-row sm:items-center">
             {/* Logo */}

@@ -44,12 +44,17 @@ const CardFilter = ({
   return (
     <>
       {/* Filter buttons */}
-      <div className="sm:px-2 flex flex-row justify-between md:flex-row md:items-start items-center">
-        <ul className="sm:px-10 flex gap-4 sm:gap-2 justify-center sm:justify-start items-center flex-wrap">
+      <div>
+
+      </div>
+      <div className="sm:px-2 grid grid-cols-[3fr_1fr] sm:gap-60 ">
+        <ul className=" flex gap-4 sm:gap-8 md:gap-4 justify-start  items-center flex-wrap font-semibold ">
+        <div className="flex-1 hidden sm:block"></div>
+        
           <li
             onClick={() => handleFilterByType("all")}
             className={`text-base px-2 py-1 sm:px-4 sm:py-2 leading-normal tracking-normal cursor-pointer hover:bg-primary2 hover:text-white transition duration-300 ease-in-out ${
-              linkSectionFilter === "all" ? "bg-primary2 text-white" : "bg-yellow-300"
+              linkSectionFilter === "all" ? "bg-primary2 text-white" : "bg-[#d3cfcf]"
             }`}
           >
             All
@@ -57,7 +62,7 @@ const CardFilter = ({
           <li
             onClick={() => handleFilterByType("credit")}
             className={`text-base px-2 py-1 sm:px-4 sm:py-2 hover:bg-primary2 hover:text-white cursor-pointer transition duration-300 ease-in-out ${
-              linkSectionFilter === "credit" ? "bg-primary2 text-white" : "bg-yellow-300"
+              linkSectionFilter === "credit" ? "bg-primary2 text-white" : "bg-[#d3cfcf]"
             }`}
           >
             Credit Auction
@@ -65,7 +70,7 @@ const CardFilter = ({
           <li
             onClick={() => handleFilterByType("nba")}
             className={`text-base px-2 py-1 sm:px-4 sm:py-2 hover:bg-primary2 hover:text-white cursor-pointer transition duration-300 ease-in-out ${
-              linkSectionFilter === "nba" ? "bg-primary2 text-white" : "bg-yellow-300"
+              linkSectionFilter === "nba" ? "bg-primary2 text-white" : "bg-[#d3cfcf]"
             }`}
           >
             NBA
@@ -73,30 +78,33 @@ const CardFilter = ({
           <li
             onClick={() => handleFilterByType("banking")}
             className={`text-base px-2 py-1 sm:px-4 sm:py-2 hover:bg-primary2 hover:text-white cursor-pointer transition duration-300 ease-in-out ${
-              linkSectionFilter === "banking" ? "bg-primary2 text-white" : "bg-yellow-300"
+              linkSectionFilter === "banking" ? "bg-primary2 text-white" : "bg-[#d3cfcf]"
             }`}
           >
             Banking Assets
           </li>
         </ul>
-
         {/* Filter Toggle */}
         <div
-          className="flex gap-2 cursor-pointer border outline-2 text-base px-2  bg-yellow-300 py-1  self-start"
+          className=" lg:w-24 flex flex-row sm:justify-end  h-9  sm:self-end md:self-auto  tex gap-2 cursor-pointer border outline-2 text-base px-2 font-semibold bg-[#d3cfcf] py-1   hover:text-white hover:bg-primary1 transition transform durartion-200 ease-in-out"
           onClick={() => setShowFilters(!showFilters)}
         >
           Filter
           <span>
-            <BsFilterRight className="text-xl cursor-pointer hover:text-primary2 transition duration-300 ease-in-out" />
+            <BsFilterRight className="text-xl cursor-pointer  " />
           </span>
         </div>
       </div>
-      <div className="w-full bg-yellow-400 h-[1px] mt-3"></div>
 
+      <div className=" flex sm:px-10 py-4">
+        <div className=" w-full bg-gray-400 h-[1px] mt-3"></div>
+      </div>
       {/* Toggleable Filters Section */}
       {showFilters && (
+        <div className="px-10">
+
         <div className="bg-gray-100 p-4 ">
-          <div className="grid md:grid-cols-4 gap-4">
+          <div className=" px-8 grid md:grid-cols-4 gap-4">
             {/* Auction Type Dropdown */}
             <select
               name="auctionType"
@@ -159,7 +167,7 @@ const CardFilter = ({
           </div>
 
           {/* Apply and Reset Buttons */}
-          <div className="mt-4">
+          <div className="mt-4 px-8">
             <button
               className="bg-primary1 hover:bg-yellow-400 text-white px-4 py-2 "
               onClick={handleApplyFilters} // Apply filters when clicked
@@ -173,6 +181,7 @@ const CardFilter = ({
               Reset
             </button>
           </div>
+        </div>
         </div>
       )}
     </>
