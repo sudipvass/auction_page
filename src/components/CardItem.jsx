@@ -44,7 +44,7 @@ const CardItem = ({ item, countdownTime }) => {
         </div>
 
         {/* Dots Indicator */}
-        {/* <div className="absolute bottom-2 left-0 right-0 flex justify-center space-x-2">
+        <div className="absolute bottom-10 left-0 right-0 flex justify-center space-x-2">
           {item.landImg.map((_, index) => (
             <span
               key={index}
@@ -53,12 +53,12 @@ const CardItem = ({ item, countdownTime }) => {
                 e.stopPropagation();
                 handlePrevImage();
               }}
-              className={`h-2 w-2 rounded-full ${
-                index === currentIndex ? "bg-white" : "bg-gray-400"
+              className={`h-3 w-3 rounded-full ${
+                index === currentIndex ? "bg-black" : "bg-gray-400"
               }`}
             />
           ))}
-        </div> */}
+        </div>
 
         {/* Previous and Next Arrows */}
         <button
