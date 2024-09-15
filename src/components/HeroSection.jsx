@@ -51,10 +51,10 @@ const HeroSection = () => {
         <div className="flex flex-col justify-center items-center p-8 md:p-16">
           <div className="text-center md:text-start mb-4">
             <h1 className="text-3xl md:text-4xl font-bold">
-              Your Gateway To Deals
+            <span className='text-[#fbb81a]'>Your Gateway</span> To Deals
             </h1>
             <p className="mt-2 text-lg">
-            Discover valuable opportunities with Siddhartha Bank Auction Assistance – your trusted destination for exclusive deals and prime assets.  
+            Discover valuable opportunities with  Siddhartha Bank  Auction Assistance – your trusted destination for exclusive deals and prime assets.  
             </p>
           </div>
 

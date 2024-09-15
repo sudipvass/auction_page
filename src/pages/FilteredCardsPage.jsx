@@ -66,7 +66,7 @@ const FilteredCardsPage = () => {
     if (searchType === 'auctionType' && value !== 'total') {
       filtered = filtered.filter((card) => card.type.toLowerCase() === value.toLowerCase());
     }
-    if (searchType === 'proinvce' && value !== 'total') {
+    if (searchType === 'province' && value !== 'total') {
       filtered = filtered.filter((card) => card.province.toLowerCase() === value.toLowerCase());
     }
     if (searchType === 'district' && value !== 'total') {

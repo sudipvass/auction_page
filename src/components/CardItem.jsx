@@ -39,12 +39,10 @@ const CardItem = ({ item, countdownTime }) => {
           alt="property"
         />
         {/* Countdown Timer at the base of the image slider */}
-        <div className="absolute bottom-0 left-0 w-full bg-black bg-opacity-50 text-white text-center py-2">
-          {countdownTime}
-        </div>
+        
 
         {/* Dots Indicator */}
-        <div className="absolute bottom-10 left-0 right-0 flex justify-center space-x-2">
+        <div className="absolute bottom-3 left-0 right-0 flex justify-center space-x-2">
           {item.landImg.map((_, index) => (
             <span
               key={index}
@@ -53,8 +51,8 @@ const CardItem = ({ item, countdownTime }) => {
                 e.stopPropagation();
                 handlePrevImage();
               }}
-              className={`h-3 w-3 rounded-full ${
-                index === currentIndex ? "bg-black" : "bg-gray-400"
+              className={`h-2 w-2 rounded-full ${
+                index === currentIndex ? "bg-[#fbb81a]" : "bg-white"
               }`}
             />
           ))}
@@ -67,7 +65,7 @@ const CardItem = ({ item, countdownTime }) => {
             e.stopPropagation();
             handlePrevImage();
           }}
-          className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black text-white p-2 rounded-full shadow hidden group-hover:block z-20"
+          className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-primary1 text-white p-2 rounded-full shadow hidden group-hover:block z-20"
         >
           <FaAngleLeft />
         </button>
@@ -77,7 +75,7 @@ const CardItem = ({ item, countdownTime }) => {
             e.stopPropagation();
             handleNextImage();
           }}
-          className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black text-white p-2 rounded-full shadow hidden group-hover:block z-20"
+          className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-primary1 text-white p-2 rounded-full shadow hidden group-hover:block z-20"
         >
           <FaAngleRight />
         </button>
@@ -85,32 +83,36 @@ const CardItem = ({ item, countdownTime }) => {
 
       {/* Card Content */}
       <div className="p-4 flex flex-col justify-between flex-grow">
-        <div>
-          <h2 className="font-bold text-primary1 text-lg mb-2">
-            Area: <span className="text-primary2">{item.area} sq.ft.</span>
+        <div className="mt-6">
+          {/* Countdown */}
+      <div className="absolute top-[44%] left-0 w-full bg-[#fbb81a] rounded-b-3xl font-bold text-white text-center py-2">
+          {countdownTime}
+        </div>
+          <h2 className="font-bold text-primary2 text-lg mb-2">
+            Area: <span className="text-primary1">{item.area} sq.ft.</span>
           </h2>
-          <p className="text-gray-500 text-lg mb-2">Plot: {item.plot}</p>
-          <p className="text-gray-700 text-md mb-4">
-            Location: <span className="font-bold">{item.location}</span>
+          <p className="text-primary2 text-lg mb-2 font-semibold">Plot: <span className="text-primary1">{item.plot}</span> </p>
+          <p className="text-primary2 text-md mb-4 font-semibold">
+            Location: <span className="font-bold text-primary1">{item.location}</span>
           </p>
         </div>
 
         {/* Auction Start and End Time */}
         <div className="mb-4">
           <div className="flex items-center mb-2">
-            <IoTimeOutline className="mr-2" />
-            <p className="text-gray-700">
+            <IoTimeOutline className="mr-2 text-primary1" />
+            <p className="text-primary2 font-semibold">
               Auction Start:{" "}
-              <span className="font-semibold">
+              <span className="font-bold text-primary2">
                 {new Date(item.auctionStart).toLocaleDateString()}
               </span>
             </p>
           </div>
           <div className="flex items-center">
-            <IoTimeOutline className="mr-2" />
-            <p className="text-gray-700">
+            <IoTimeOutline className="mr-2 text-primary1 " />
+            <p className="text-primary2 font-semibold">
               Auction End:{" "}
-              <span className="font-semibold">
+              <span className="font-bold text-primary2">
                 {new Date(item.auctionEnd).toLocaleDateString()}
               </span>
             </p>
@@ -118,17 +120,24 @@ const CardItem = ({ item, countdownTime }) => {
         </div>
 
         {/* Property Type Tag */}
-        <div className="text-white text-center px-4 rounded-lg py-2 bg-yellow-400 absolute top-0 left-0 font-semibold">
+        <div className="text-white text-center px-2 rounded-lg py-1 bg-[#fbb81a] absolute top-2 left-2 font-semibold">
           {item.propertyType}
         </div>
 
         {/* View Detail Button */}
         <button
-          className="bg-primary1 text-white font-bold py-2 px-4 rounded-lg self-end"
-          onClick={handleCardClick}
-        >
-          View Detail
-        </button>
+  className="relative text-base px-4 py-2 font-bold rounded-lg overflow-hidden
+    border border-primary1
+    transition-colors duration-500 ease-in-out
+    bg-transparent text-primary1
+    hover:bg-primary1 hover:text-white
+    before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-primary1 before:transform before:scale-x-0 before:origin-left before:transition-transform before:duration-500 before:ease-in-out before:rounded-lg
+    hover:before:scale-x-100 self-end"
+  onClick={handleCardClick}
+>
+  <span className="relative z-10">View Detail</span>
+</button>
+
       </div>
     </div>
   );
