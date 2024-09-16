@@ -17,11 +17,12 @@ import "react-medium-image-zoom/dist/styles.css"; // Import for zoom functionali
 const CardDetail = () => {
   const { propertyDetail } = useContext(PropertyContext);
 
+  // Ensure hooks are called before conditional logic
+  const [currentIndex, setCurrentIndex] = useState(0);
+
   if (!propertyDetail) {
     return <div>Loading...</div>;
   }
-
-  const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleNextImage = () => {
     setCurrentIndex((prevIndex) =>
@@ -38,13 +39,13 @@ const CardDetail = () => {
   return (
     <>
       <NavBar />
-      <div className="container mx-auto pt-24 p-4">
+      <div className="container p-4 sm:px-12 pt-15">
         {/* Top Section */}
         <div className="bg-primary3 grid grid-cols-1 md:grid-cols-3 gap-5 shadow-md rounded-lg p-4 mb-6">
           <div className="flex flex-col">
             <h1 className="text-lg font-semibold mb-2">
-              {propertyDetail.location}, Plot {propertyDetail.plot} with Area of{" "}
-              {propertyDetail.area} sq.ft.
+              {propertyDetail.location}, Plot {propertyDetail.plot} with an area
+              of {propertyDetail.area} sq.ft.
             </h1>
             <p>
               Auction Start Date:{" "}
@@ -57,16 +58,16 @@ const CardDetail = () => {
             <a
               href={propertyDetail.googleLocation}
               rel="noopener noreferrer"
-              className="text-primary1 font-bold  cursor-pointer py-2 px-3 border-2 w-[249px] rounded-full border-dotted text-center hover:scale-100 transform "
+              className="text-primary1 font-bold cursor-pointer py-[6px] px-2  border-2 w-[260px] rounded-full border-dotted text-center hover:scale-110 delay-75 ease-in-out duration-150 transform"
             >
-              View Location in Google Map
+              View Location on Google Map
             </a>
           </div>
 
           {/* Contact Info and Social Links */}
           <div className="mt-4">
             <p>Contact Details for Further Assistance:</p>
-            <ul className="">
+            <ul>
               <li>Contact Name 1: 9812345678</li>
               <li>Contact Name 2: 9812345678</li>
             </ul>
@@ -142,94 +143,86 @@ const CardDetail = () => {
             {/* Google Location Embed */}
             <div className="bg-white shadow-md rounded-lg p-4">
               <h3 className="text-lg font-semibold mb-4">Google Location</h3>
-              {/* <iframe
-                src={propertyDetail.googleLocation}
-                width="100%"
-                height="400"
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              ></iframe> */}
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.710078483527!2d85.33393177405259!3d27.69535422602292!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19a77520a339%3A0x4df14616bdef4f1c!2sSoftech%20Foundation%20Pvt.Ltd.!5e0!3m2!1sen!2snp!4v1725950146568!5m2!1sen!2snp"
                 width="100%"
                 height="400"
-                style={{border:0}}
-                allowfullscreen=""
+                style={{ border: 0 }}
+                allowFullScreen="" // Correct this prop
                 loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
+                referrerPolicy="no-referrer-when-downgrade" // Correct this prop
               ></iframe>
               <a
                 href={propertyDetail.googleLocation}
                 rel="noopener noreferrer"
-                className="text-red-600 underline block mt-2 cursor-pointer"
+                className="text-primary1 underline block mt-2 cursor-pointer"
               >
-                Click here to view location in Google Map
+                Click here to view location on Google Map
               </a>
             </div>
           </div>
 
           {/* Sidebar */}
-          <div className="md:col-span-1 sticky top-24 ">
+          <div className="md:col-span-1 sticky top-24">
             <div className="sticky top-24">
-            <div className="bg-white  shadow-md rounded-lg p-4 mb-6">
-              <h3 className="text-lg font-semibold mb-4">
-                Scan to Get Our Website URL
-              </h3>
-              <img src={assets.qr} alt="QR Code" className="w-full h-auto" />
-            </div>
-            <div className="bg-white shadow-md rounded-lg p-4">
-            </div>
-              <h3 className="text-lg font-semibold mb-4">
-                Request Your Enquiry Here
-              </h3>
-              <form>
-                <div className="mb-4">
-                  <label className="block text-gray-700">Full Name</label>
-                  <input
-                    type="text"
-                    className="w-full p-2 border rounded"
-                    placeholder="Your Name"
-                  />
-                </div>
-                <div className="mb-4">
-                  <label className="block text-gray-700">Email</label>
-                  <input
-                    type="email"
-                    className="w-full p-2 border rounded"
-                    placeholder="Your Email"
-                  />
-                </div>
-                <div className="mb-4">
-                  <label className="block text-gray-700">Mobile Number</label>
-                  <input
-                    type="text"
-                    className="w-full p-2 border rounded"
-                    placeholder="Your Mobile Number"
-                  />
-                </div>
-                <div className="mb-4">
-                  <label className="block text-gray-700">Your Address</label>
-                  <input
-                    type="text"
-                    className="w-full p-2 border rounded"
-                    placeholder="Your Address"
-                  />
-                </div>
-                <div className="mb-4">
-                  <label className="block text-gray-700">Message</label>
-                  <textarea
-                    className="w-full p-2 border rounded"
-                    placeholder="Your Message"
-                  ></textarea>
-                </div>
-                <button
-                  type="submit"
-                  className="w-full bg-red-600 text-white p-2 rounded"
-                >
-                  Submit
-                </button>
-              </form>
+              <div className="bg-white shadow-md rounded-lg p-4 mb-6">
+                <h3 className="text-lg font-semibold mb-4">
+                  Scan to Get Our Website URL
+                </h3>
+                <img src={assets.qr} alt="QR Code" className="w-full h-auto" />
+              </div>
+              <div className="bg-white shadow-md rounded-lg p-4">
+                <h3 className="text-lg font-semibold mb-4">
+                  Request Your Enquiry Here
+                </h3>
+                <form>
+                  <div className="mb-4">
+                    <label className="block text-gray-700">Full Name</label>
+                    <input
+                      type="text"
+                      className="w-full p-2 border rounded"
+                      placeholder="Your Name"
+                    />
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-gray-700">Email</label>
+                    <input
+                      type="email"
+                      className="w-full p-2 border rounded"
+                      placeholder="Your Email"
+                    />
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-gray-700">Mobile Number</label>
+                    <input
+                      type="text"
+                      className="w-full p-2 border rounded"
+                      placeholder="Your Mobile Number"
+                    />
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-gray-700">Your Address</label>
+                    <input
+                      type="text"
+                      className="w-full p-2 border rounded"
+                      placeholder="Your Address"
+                    />
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-gray-700">Message</label>
+                    <textarea
+                      className="w-full p-2 border rounded"
+                      placeholder="Your Message"
+                    ></textarea>
+                  </div>
+                  <button
+                    type="submit"
+                    className="w-full bg-primary1 text-white p-2 rounded"
+                  >
+                    Submit
+                  </button>
+                </form>
+              </div>
             </div>
           </div>
         </div>
@@ -240,3 +233,4 @@ const CardDetail = () => {
 };
 
 export default CardDetail;
+

@@ -39,7 +39,6 @@ const CardItem = ({ item, countdownTime }) => {
           alt="property"
         />
         {/* Countdown Timer at the base of the image slider */}
-        
 
         {/* Dots Indicator */}
         <div className="absolute bottom-3 left-0 right-0 flex justify-center space-x-2">
@@ -85,15 +84,18 @@ const CardItem = ({ item, countdownTime }) => {
       <div className="p-4 flex flex-col justify-between flex-grow">
         <div className="mt-6">
           {/* Countdown */}
-      <div className="absolute top-[44%] left-0 w-full bg-[#fbb81a] rounded-b-3xl font-bold text-white text-center py-2">
-          {countdownTime}
-        </div>
+          <div className="absolute top-[44%] left-0 w-full bg-[#fbb81a] rounded-b-3xl font-bold text-white text-center py-2">
+            {countdownTime}
+          </div>
           <h2 className="font-bold text-primary2 text-lg mb-2">
             Area: <span className="text-primary1">{item.area} sq.ft.</span>
           </h2>
-          <p className="text-primary2 text-lg mb-2 font-semibold">Plot: <span className="text-primary1">{item.plot}</span> </p>
+          <p className="text-primary2 text-lg mb-2 font-semibold">
+            Plot: <span className="text-primary1">{item.plot}</span>{" "}
+          </p>
           <p className="text-primary2 text-md mb-4 font-semibold">
-            Location: <span className="font-bold text-primary1">{item.location}</span>
+            Location:{" "}
+            <span className="font-bold text-primary1">{item.location}</span>
           </p>
         </div>
 
@@ -126,18 +128,17 @@ const CardItem = ({ item, countdownTime }) => {
 
         {/* View Detail Button */}
         <button
-  className="relative text-base px-4 py-2 font-bold rounded-lg overflow-hidden
+          className="relative text-base px-4 py-2 font-bold rounded-lg overflow-hidden
     border border-primary1
     transition-colors duration-500 ease-in-out
     bg-transparent text-primary1
     hover:bg-primary1 hover:text-white
     before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-primary1 before:transform before:scale-x-0 before:origin-left before:transition-transform before:duration-500 before:ease-in-out before:rounded-lg
     hover:before:scale-x-100 self-end"
-  onClick={handleCardClick}
->
-  <span className="relative z-10">View Detail</span>
-</button>
-
+          onClick={handleCardClick}
+        >
+          <span className="relative z-10">View Detail</span>
+        </button>
       </div>
     </div>
   );

@@ -46,8 +46,7 @@ const CardFilter = ({
       {/* Filter buttons */}
       <div></div>
       <div className="sm:px-2 grid grid-cols-[4fr_1fr] sm:gap-60 ">
-        
-        <ul className=" flex gap-4 sm:gap-8 md:gap-12 sm:ml-24 justify-start  items-center flex-wrap  ">
+        <ul className=" flex gap-4 sm:gap-2 md:gap-4 sm:ml-24 justify-start  items-center flex-wrap  ">
           <div className="flex-1 hidden sm:block"></div>
 
           <li onClick={() => handleFilterByType("all")}>
@@ -127,9 +126,7 @@ const CardFilter = ({
     hover:before:scale-x-100 rounded`}
           onClick={() => setShowFilters(!showFilters)}
         >
-          <span className="relative z-10 ">
-            Filter
-          </span>
+          <span className="relative z-10 ">Filter</span>
           <span className="text-xl cursor-pointer relative z-10 ">
             <BsFilterRight className=" hover:text-white" />
           </span>
@@ -207,29 +204,27 @@ const CardFilter = ({
 
             {/* Apply and Reset Buttons */}
             <div className="mt-4 px-8">
-  <button
-    className="relative  text-white px-2 py-1 overflow-hidden border border-primary1
+              <button
+                className="relative  text-white px-2 py-1 overflow-hidden border border-primary1
       transition-colors duration-500 ease-in-out
       hover:bg hover:text-black
       before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-primary1 before:transform before:scale-x-100 before:origin-left before:transition-transform before:duration-500 before:ease-in-out
       hover:before:scale-x-0 rounded"
-    onClick={handleApplyFilters} // Apply filters when clicked
-  >
-    <span className="relative z-10">Apply</span>
-  </button>
-  <button
-    className="relative  text-white px-2 py-1 overflow-hidden border border-primary1
+                onClick={handleApplyFilters} 
+              >
+                <span className="relative z-10">Apply</span>
+              </button>
+              <button
+                className="relative  text-white px-2 py-1 overflow-hidden border border-primary1
       transition-colors duration-500 ease-in-out
       hover:bg hover:text-black
       before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-primary2 before:transform before:scale-x-100 before:origin-left before:transition-transform before:duration-500 before:ease-in-out
       hover:before:scale-x-0 sm:ml-5 rounded"
-    onClick={handleResetFilters} // Reset filters when clicked
-  >
-    <span className="relative z-10">Reset</span>
-  </button>
-</div>
-
-
+                onClick={handleResetFilters} 
+              >
+                <span className="relative z-10">Reset</span>
+              </button>
+            </div>
           </div>
         </div>
       )}

@@ -126,14 +126,17 @@ const Card = () => {
         ))}
       </div>
 
-      {/* View More Button */}
+      {/* View More Button */} 
       {visibleCount < filteredCards.length && (
         <div className="text-center">
           <button
            onClick={() => handleAuctionTypeClick('total')}
-            className="bg-primary1 text-white py-2 px-4 rounded-full mt-4"
+            className="    relative px-2 mt-4 py-[6px] overflow-hidden border border-primary1 transition-colors duration-500 ease-in-out  text-white  hover:text-primary1 before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-primary1 before:transform  before:scale-x-100 before:origin-right before:transition-transform before:duration-500 before:ease-in-out  hover:before:scale-x-0 rounded-lg"
+
           >
+            <span className="relative z-10">
             View More
+            </span>
           </button>
         </div>
       )}
