@@ -218,7 +218,7 @@ const CardFilter = ({
                 className="relative  text-white px-2 py-1 overflow-hidden border border-primary1
       transition-colors duration-500 ease-in-out
       hover:bg hover:text-black
-      before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-primary2 before:transform before:scale-x-100 before:origin-left before:transition-transform before:duration-500 before:ease-in-out
+      before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-primary2 before:transform before:scale-x-100 before:origin-right before:transition-transform before:duration-500 before:ease-in-out
       hover:before:scale-x-0 sm:ml-5 rounded"
                 onClick={handleResetFilters} 
               >

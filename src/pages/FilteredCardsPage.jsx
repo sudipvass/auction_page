@@ -260,17 +260,25 @@ const FilterSection = ({ filters, handleFilterChange, applyFilters, resetFilters
 
     <div className="mt-4">
       <button
-        className="bg-primary1 hover:bg-yellow-400 text-white px-4 py-2 rounded-lg"
-        onClick={applyFilters}
-      >
-        Apply
-      </button>
-      <button
-        className="bg-primary2 hover:bg-[#292727] text-white px-4 py-2 rounded-lg ml-2"
-        onClick={resetFilters}
-      >
-        Reset
-      </button>
+                className="relative  text-white px-2 py-1 overflow-hidden border border-primary1
+      transition-colors duration-500 ease-in-out
+      hover:bg hover:text-black
+      before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-primary1 before:transform before:scale-x-100 before:origin-left before:transition-transform before:duration-500 before:ease-in-out
+      hover:before:scale-x-0 rounded"
+                onClick={applyFilters} 
+              >
+                <span className="relative z-10">Apply</span>
+              </button>
+              <button
+                className="relative  text-white px-2 py-1 overflow-hidden border border-primary1
+      transition-colors duration-500 ease-in-out
+      hover:bg hover:text-black
+      before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-primary2 before:transform before:scale-x-100 before:origin-right before:transition-transform before:duration-500 before:ease-in-out
+      hover:before:scale-x-0 sm:ml-5 rounded"
+                onClick={resetFilters} 
+              >
+                <span className="relative z-10">Reset</span>
+              </button>
     </div>
   </div>
 );

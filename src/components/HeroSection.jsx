@@ -9,7 +9,9 @@ const HeroSection = () => {
   const navigate = useNavigate();
 
   const slides = [
-    assets.slider6,
+    assets.slider1,
+    assets.slider2,
+    assets.slider3,
     assets.slider4,
   ];
 

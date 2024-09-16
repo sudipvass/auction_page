@@ -4,8 +4,6 @@ import slider1 from './images/slider1.png'
 import slider2 from './images/slider2.png'
 import slider3 from './images/slider3.png'
 import slider4 from './images/slider4.png'
-import slider5 from './images/slider5.png'
-import slider6 from './images/slider6.png'
 import slogan from './images/slogan.png'
 import logo from './images/logo.png'
 import langImg from './images/dk.jpg'
@@ -18,15 +16,14 @@ export const assets = {
     slider1,
     slider2,
     slider3,
-    slider4,
-    slider5,
+   slider4,
     slogan,
     logo,
     langImg,
     prop1,
     prop2,
     qr,
-    slider6,
+ 
     bluePrint
 
 }
